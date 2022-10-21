@@ -1,0 +1,26 @@
+package com.adrjan.gymtracker.entity;
+
+import lombok.*;
+
+import javax.persistence.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Builder
+public class ExerciseSerie {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "exercise_id")
+    private Exercise exercise;
+    private int reps;
+    private int weight;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "exercise_series_id")
+    private ExerciseSeries exerciseSeries;
+}
