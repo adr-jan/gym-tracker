@@ -4,14 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExerciseForm {
+public class WeightForm {
 
-    private int exerciseId;
-    private List<RepsForm> repForm;
-    private List<WeightForm> weightForm;
+    private int weight;
 }

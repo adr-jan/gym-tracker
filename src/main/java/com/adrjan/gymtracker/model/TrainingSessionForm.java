@@ -9,9 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExerciseForm {
+public class TrainingSessionForm {
 
-    private int exerciseId;
-    private List<RepsForm> repForm;
-    private List<WeightForm> weightForm;
+    private List<ExerciseForm> trainingSessionForm;
 }

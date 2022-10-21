@@ -26,7 +26,7 @@
         inputRep.setAttribute("id", "rep");
         inputRep.setAttribute("placeholder", "powt.");
         inputRep.setAttribute("class", "form-control w-50");
-        inputRep.setAttribute("name", "exerciseFormList[" + exerciseNo + "].reps");
+        inputRep.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].repForm[]");
 
         var inputWeight = document.createElement("INPUT");
         inputWeight.setAttribute("id", "weight");
@@ -60,12 +60,14 @@
 
            var inputRep = document.createElement("INPUT");
            inputRep.setAttribute("id", "rep");
+           inputRep.setAttribute("type", "number");
            inputRep.setAttribute("class", "form-control w-50");
            inputRep.setAttribute("placeholder", "powt.");
            inputRep.setAttribute("name", "exerciseFormList[" + exerciseNo + "].reps");
 
            var inputWeight = document.createElement("INPUT");
            inputWeight.setAttribute("id", "weight");
+           inputWeight.setAttribute("type", "number");
            inputWeight.setAttribute("class", "form-control w-50");
            inputWeight.setAttribute("placeholder", "kg");
            inputWeight.setAttribute("name", "exerciseFormList[" + exerciseNo + "].weights");
