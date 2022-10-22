@@ -21,6 +21,6 @@ public class ExerciseSerie {
     private int reps;
     private int weight;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "exercise_series_id")
-    private ExerciseSeries exerciseSeries;
+    @JoinColumn(name = "exercise_session_id")
+    private ExerciseSession exerciseSession;
 }

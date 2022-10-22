@@ -4,11 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExerciseForms {
-    List<ExerciseForm> exerciseFormList;
+public class TrainingSessionForm {
+
+    private List<@Valid ExerciseForm> trainingSessionForm;
 }

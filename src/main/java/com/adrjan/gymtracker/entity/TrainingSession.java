@@ -12,11 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class ExerciseSeries {
+public class TrainingSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @OneToMany(mappedBy = "exerciseSeries")
-    private List<ExerciseSerie> exerciseSeries = new ArrayList<>();
+    @OneToMany(mappedBy = "trainingSession")
+    private List<ExerciseSession> exerciseSessionList = new ArrayList<>();
 }

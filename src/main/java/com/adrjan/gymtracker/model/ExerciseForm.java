@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -12,6 +14,6 @@ import java.util.List;
 public class ExerciseForm {
 
     private int exerciseId;
-    private List<Integer> reps;
-    private List<Integer> weights;
+    private List<@NotNull @Digits(integer = 10, fraction = 0) Integer> reps;
+    private List<@NotNull @Digits(integer = 10, fraction = 0) Integer> weights;
 }
