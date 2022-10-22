@@ -120,7 +120,9 @@
     </div>
 </nav>
 
-<div class="container">
+<th:p class="row col-md-12 text-danger justify-content-center" th:if="${exercisesList.empty}">Brak ćwiczeń w bazie! Aby dodać trening najpierw musisz dodać ćwiczenie do bazy.</th:p>
+
+<div class="container" th:unless="${exercisesList.empty}">
     <form id="exercise-form" method="post" class="d-flex flex-wrap" th:object="${trainingSessionForm}">
         <div class="row col-md-12 justify-content-center">
             <button type="button" onclick="createExercise()" class="btn btn-success col-md-8">Dodaj ćwiczenie</button>
