@@ -62,7 +62,9 @@
             <div class="carousel slide light" data-bs-ride="carousel" style="height: 20rem;">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <p>Przykładowy tekst, który będzie znajdował w itemku pierwszym karuzeli.</p>
+                        <span>W bazie znajduję się już </span>
+                        <span th:text="${#lists.size(exercises)}"></span>
+                        <span> pozycji.</span>
                     </div>
                     <div class="carousel-item">
                         <p>Przykładowy tekst, który będzie znajdował w itemku drugim karuzeli.</p>
