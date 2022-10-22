@@ -19,7 +19,7 @@ public class ExerciseSession {
     private int id;
     @OneToMany(mappedBy = "exerciseSession")
     private List<ExerciseSerie> exerciseSerieList = new ArrayList<>();
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "training_session_id")
     private TrainingSession trainingSession;
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Data
@@ -11,5 +12,5 @@ import java.util.List;
 @AllArgsConstructor
 public class TrainingSessionForm {
 
-    private List<ExerciseForm> trainingSessionForm;
+    private List<@Valid ExerciseForm> trainingSessionForm;
 }

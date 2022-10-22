@@ -25,14 +25,16 @@
         var inputRep = document.createElement("INPUT");
         inputRep.setAttribute("id", "rep");
         inputRep.setAttribute("placeholder", "powt.");
+        inputRep.setAttribute("type", "number");
         inputRep.setAttribute("class", "form-control w-50");
-        inputRep.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].repForm[]");
+        inputRep.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].reps");
 
         var inputWeight = document.createElement("INPUT");
         inputWeight.setAttribute("id", "weight");
         inputWeight.setAttribute("placeholder", "kg");
+        inputWeight.setAttribute("type", "number");
         inputWeight.setAttribute("class", "form-control w-50");
-        inputWeight.setAttribute("name", "exerciseFormList[" + exerciseNo + "].weights");
+        inputWeight.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].weights");
 
         container.appendChild(inputRep);
         container.appendChild(inputWeight);
@@ -48,7 +50,7 @@
            var selectExercise = document.createElement("SELECT");
            selectExercise.setAttribute("class", "form-control w-100");
            selectExercise.setAttribute("id", "exercise");
-           selectExercise.setAttribute("name", "exerciseFormList[" + exerciseNo + "].exerciseId");
+           selectExercise.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].exerciseId");
 
            var list = [[${exercisesList}]];
            for (var i = 0; i < list.length; i++) {
@@ -63,14 +65,14 @@
            inputRep.setAttribute("type", "number");
            inputRep.setAttribute("class", "form-control w-50");
            inputRep.setAttribute("placeholder", "powt.");
-           inputRep.setAttribute("name", "exerciseFormList[" + exerciseNo + "].reps");
+           inputRep.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].reps");
 
            var inputWeight = document.createElement("INPUT");
            inputWeight.setAttribute("id", "weight");
            inputWeight.setAttribute("type", "number");
            inputWeight.setAttribute("class", "form-control w-50");
            inputWeight.setAttribute("placeholder", "kg");
-           inputWeight.setAttribute("name", "exerciseFormList[" + exerciseNo + "].weights");
+           inputWeight.setAttribute("name", "trainingSessionForm[" + exerciseNo + "].weights");
 
            var button = document.createElement("BUTTON");
            button.setAttribute("onclick", "createRep(" + exerciseNo + ")");
@@ -98,6 +100,7 @@
         document.getElementById("exercise-block-" + exerciseNo).remove();
     }
 
+
 </script>
 
 <body>
@@ -118,10 +121,14 @@
 </nav>
 
 <div class="container">
-    <form id="exercise-form" method="post" class="d-flex flex-wrap">
+    <form id="exercise-form" method="post" class="d-flex flex-wrap" th:object="${trainingSessionForm}">
         <div class="row col-md-12 justify-content-center">
             <button type="button" onclick="createExercise()" class="btn btn-success col-md-8">Dodaj ćwiczenie</button>
             <button type="submit" class="btn btn-danger col-md-4 text-center">Zakończ trening</button>
+            <div th:if="${#fields.hasErrors('*')}">
+                <p class="text-danger text-center">Dane nie zostały poprawnie dodane, spróbuj ponownie bądź skontaktuj
+                    się z administratorem.</p>
+            </div>
         </div>
         <div id="lil-forms" class="row col-md-12 justify-content-center mt-3">
 
