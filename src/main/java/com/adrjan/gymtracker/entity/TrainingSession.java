@@ -3,9 +3,11 @@ package com.adrjan.gymtracker.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -19,4 +21,10 @@ public class TrainingSession {
     private int id;
     @OneToMany(mappedBy = "trainingSession")
     private List<ExerciseSession> exerciseSessionList = new ArrayList<>();
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
+    private Date createdAt;
+    @PrePersist
+    private void setDate() {
+        createdAt = new Date();
+    }
 }
