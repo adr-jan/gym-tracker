@@ -33,16 +33,20 @@
 </nav>
 
 <!-- BODY -->
-
-<div class="container row">
-    <div class="accordion col-md-6 float-end">
-        <div class="accordion-item" th:each="training : ${trainings}">
-            <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
-                    <span th:text="${training.createdAt}"/>
-                </button>
-            </h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="text-center">Wybierz trening.</h2>
+        </div>
+        <div class="col-md-6">
+            <div class="list-group" th:each="training: ${trainings}">
+                <th:form method="post">
+                    <input type="hidden">
+                    <button type="submit" class="list-group-item list-group-item-action">
+                        <span th:text="${training.value}"/>
+                    </button>
+                </th:form>
+            </div>
         </div>
     </div>
 </div>
