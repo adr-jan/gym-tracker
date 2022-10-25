@@ -36,10 +36,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h2 th:if="${trainingSession.exerciseSessionList == null}" class="text-center">Wybierz trening.</h2>
-            <div th:if="${trainingSession.exerciseSessionList != null}" th:each="exerciseSession : ${trainingSession.exerciseSessionList}">
-                <div class="border" th:each="exerciseSerie : ${exerciseSession.exerciseSerieList}">
-                    <span th:text="${exerciseSerie}"></span>
+            <h2 th:if="${trainingSession == null}" class="text-center">Wybierz trening.</h2>
+            <div th:if="${trainingSession != null}">
+                <div th:if="${trainingSession != null}" th:each="exerciseSession : ${trainingSession.exerciseSessionList}">
+                    <div class="border" th:each="exerciseSerie : ${exerciseSession.exerciseSerieList}">
+                        <span th:text="${exerciseSerie}"></span>
+                    </div>
                 </div>
             </div>
         </div>

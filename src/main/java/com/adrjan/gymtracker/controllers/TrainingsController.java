@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Controller
@@ -29,8 +29,8 @@ public class TrainingsController {
     public String showPage(@PathVariable("id") int id, Model model) {
         baseShowPage(model);
 
-        if(trainingsRepository.findById(id).isPresent())
-            model.addAttribute("trainingSession", trainingsRepository.findById(id).get());
+        model.addAttribute("trainingSession", trainingsRepository.findById(id).orElseGet(TrainingSession::new));
+
         return "trainings";
     }
 
@@ -42,9 +42,9 @@ public class TrainingsController {
 
     private void baseShowPage(Model model) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("E     dd-MM-yyyy HH:mm");
-        Map<TrainingSession, String> trainings = new HashMap<>();
+        Map<TrainingSession, String> trainings = new LinkedHashMap<>();
 
-        trainingsRepository.findAll().forEach(
+        trainingsRepository.findAllByOrderByCreatedAtDesc().forEach(
                 training -> trainings.put(training, simpleDateFormat.format(training.getCreatedAt()))
         );
 
