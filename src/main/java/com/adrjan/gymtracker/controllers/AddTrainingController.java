@@ -61,14 +61,19 @@ public class AddTrainingController {
 
         trainingSessionForm.getTrainingSessionForm().forEach(
                 exerciseForm -> {
-                    ExerciseSession tempExerciseSession = ExerciseSession.builder().trainingSession(trainingSession).build();
-                    Exercise exercise = Exercise.builder().id(exerciseForm.getExerciseId()).name("nothing").build();
+                    Exercise exercise = Exercise.builder()
+                            .id(exerciseForm.getExerciseId())
+                            .name("nothing")
+                            .build();
+                    ExerciseSession tempExerciseSession = ExerciseSession.builder()
+                            .trainingSession(trainingSession)
+                            .exercise(exercise)
+                            .build();
 
                     for (int i = 0; i < exerciseForm.getReps().size(); i++) {
                         exerciseSerieList.add(
                                 ExerciseSerie.builder()
                                         .id(0)
-                                        .exercise(exercise)
                                         .reps(exerciseForm.getReps().get(i))
                                         .weight(exerciseForm.getWeights().get(i))
                                         .exerciseSession(tempExerciseSession)

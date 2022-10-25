@@ -15,9 +15,6 @@ public class ExerciseSerie {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "exercise_id")
-    private Exercise exercise;
     private int reps;
     private int weight;
     @ManyToOne(cascade = CascadeType.ALL)
