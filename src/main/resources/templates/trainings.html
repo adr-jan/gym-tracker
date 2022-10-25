@@ -35,17 +35,32 @@
 <!-- BODY -->
 <div class="container">
     <div class="row">
-        <div class="col-md-6">
-            <h2 th:if="${trainingSession.exerciseSessionList == null}" class="text-center">Wybierz trening.</h2>
-            <div th:if="${trainingSession.exerciseSessionList != null}" th:each="exerciseSession : ${trainingSession.exerciseSessionList}">
-                <div class="border" th:each="exerciseSerie : ${exerciseSession.exerciseSerieList}">
-                    <span th:text="${exerciseSerie}"></span>
+        <div class="col-md-9">
+            <h2 th:if="${trainingSession == null}" class="text-center">Wybierz trening.</h2>
+            <div th:if="${trainingSession != null}">
+                <div th:if="${trainingSession != null}"
+                     th:each="exerciseSession : ${trainingSession.exerciseSessionList}">
+                    <div class="card col-md-4 mx-1 float-start">
+                        <div class="card-body">
+                            <h6 class="card-title ml-3" th:text="${exerciseSession.exercise.name}"></h6>
+                            <div class="card-text">
+                                <div th:each="exerciseSerie : ${exerciseSession.exerciseSerieList}">
+                                    <div>
+                                        <span th:text="${exerciseSerie.reps}"></span><span> powt.</span>
+                                        <span th:text="${exerciseSerie.weight}"></span><span> kg</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
+            <h3 class="text-center">Treningi</h3>
             <div class="list-group" th:each="training: ${trainings}">
-                <a class="list-group-item list-group-item-action" th:href="@{/trainings/{id}(id=${training.key.id})}" th:text="${training.value}" />
+                <a class="list-group-item list-group-item-action text-center" th:href="@{/trainings/{id}(id=${training.key.id})}"
+                   th:text="${training.value}"/>
             </div>
         </div>
     </div>
